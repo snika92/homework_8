@@ -61,7 +61,7 @@ class Payment(models.Model):
         related_name="users",
         verbose_name="Пользователь",
     )
-    date_of_payment = models.DateField(auto_now_add=True, verbose_name="Дата оплаты")
+    date_of_payment = models.DateField(verbose_name="Дата оплаты")
     course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,
