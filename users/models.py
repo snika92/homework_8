@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
+from materials.models import Course, Lesson
+
 
 class User(AbstractUser):
     email = models.EmailField(
@@ -42,3 +44,49 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+
+class Payment(models.Model):
+    CASH = "Наличные"
+    CARD = "Перевод на счёт"
+
+    PAYMENT_CHOICES = [
+        (CASH, "Наличные"),
+        (CARD, "Перевод на счёт"),
+    ]
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="users",
+        verbose_name="Пользователь",
+    )
+    date_of_payment = models.DateField(auto_now_add=True, verbose_name="Дата оплаты")
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="courses",
+        verbose_name="Курс",
+    )
+    lesson = models.ForeignKey(
+        Lesson,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="lessons",
+        verbose_name="Урок",
+    )
+    payment_amount = models.PositiveIntegerField(verbose_name="Сумма оплаты")
+    method_of_payment = models.CharField(
+        default=CARD, choices=PAYMENT_CHOICES, verbose_name="Метод оплаты"
+    )
+
+    def __str__(self):
+        return f"{self.user}"
+
+    class Meta:
+        verbose_name = "Платеж"
+        verbose_name_plural = "Платежи"
+        ordering = ["date_of_payment"]
