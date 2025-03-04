@@ -15,4 +15,11 @@ class UserSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["username", "email", "phone_number", "avatar", "city", "payments"]
+        fields = ["username", "password", "email", "phone_number", "avatar", "city", "payments"]
+
+
+class ShortUserSerializer(ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ["username", "email", "phone_number", "avatar", "city"]
