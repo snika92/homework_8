@@ -1,6 +1,5 @@
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.permissions import AllowAny
-from rest_framework.viewsets import ModelViewSet
 from rest_framework.filters import OrderingFilter
 
 from .models import User, Payment
