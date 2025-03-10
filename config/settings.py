@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -7,7 +8,6 @@ load_dotenv(override=True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -20,7 +20,6 @@ DEBUG = True if os.getenv("DEBUG") == "True" else False
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -32,9 +31,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "phonenumber_field",
     "rest_framework",
+    "django_filters",
+    "rest_framework_simplejwt",
+
     "materials",
     "users",
-    "django_filters",
+
 ]
 
 EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
@@ -44,7 +46,6 @@ EMAIL_USE_TLS = True if os.getenv("EMAIL_USE_TLS") == "True" else False
 EMAIL_USE_SSL = True if os.getenv("EMAIL_USE_SSL") == "True" else False
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -77,7 +78,18 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
@@ -87,7 +99,6 @@ EMAIL_USE_TLS = True if os.getenv("EMAIL_USE_TLS") == "True" else False
 EMAIL_USE_SSL = True if os.getenv("EMAIL_USE_SSL") == "True" else False
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-
 
 DATABASES = {
     "default": {
@@ -99,7 +110,6 @@ DATABASES = {
         "PORT": os.getenv("PORT", default="5432"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -119,7 +129,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -130,7 +139,6 @@ TIME_ZONE = "Europe/Moscow"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
