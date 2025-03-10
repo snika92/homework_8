@@ -26,7 +26,7 @@ class Lesson(models.Model):
     image = models.ImageField(
         upload_to="images/", null=True, blank=True, verbose_name="Превью"
     )
-    video = models.TextField(verbose_name="Ссылка на видео")
+    video = models.URLField(verbose_name="Ссылка на видео")
     course = models.ForeignKey(
         Course,
         on_delete=models.SET_NULL,
