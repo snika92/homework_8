@@ -21,7 +21,7 @@ class CourseSerializer(ModelSerializer):
 
 class CourseDetailSerializer(ModelSerializer):
     lesson_count = SerializerMethodField()
-    lessons = SerializerMethodField()
+    lessons = SerializerMethodField(read_only=True)
     is_subscribed = SerializerMethodField(read_only=True)
 
     def get_is_subscribed(self, obj):
