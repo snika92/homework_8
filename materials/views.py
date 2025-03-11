@@ -77,11 +77,21 @@ class LessonDestroyApiView(DestroyAPIView):
 
 class SubscriptionAPIView(APIView):
 
+    def get(self, *args, **kwargs):
+        user = self.request.user
+        course_id = self.request.data.get("course")
+        course_item = get_object_or_404(Course, pk=course_id)
+        subs_item = Subscription.objects.filter(user=user, course=course_item)
+        if subs_item.exists():
+            message = f'Есть подписка на курс {course_item}'
+        else:
+            message = f'Подписки на курс {course_item} нет'
+        return Response({"message": message})
+
     def post(self, *args, **kwargs):
         user = self.request.user
         course_id = self.request.data.get("course")
         course_item = get_object_or_404(Course, pk=course_id)
-
         subs_item = Subscription.objects.filter(user=user, course=course_item)
 
         if subs_item.exists():
