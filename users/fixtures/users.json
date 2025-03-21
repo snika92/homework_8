@@ -1,0 +1,114 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$t6uy0oPmaJFKFqNVUsSbAv$QjU7TSWEvbayh9U2WBNIUNOyxijLl852JTWxnef/hnU=",
+        "last_login": "2025-03-21T07:35:21.236Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-03-21T07:35:03.706Z",
+        "email": "admin@mail.ru",
+        "phone_number": null,
+        "avatar": "",
+        "city": null,
+        "token": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$IlsyinfCfPDDsfb3QsV4OJ$VET/5wROwp25jmIAUcupo3RH5eZlMAfGshkrC4gSOmk=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Maria",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-21T07:49:58Z",
+        "email": "maria@mail.ru",
+        "phone_number": null,
+        "avatar": "",
+        "city": null,
+        "token": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$OIt2sMw4YkKkcKhfj3oy4C$pziVuVow8ACG/K4/dt6G4DYqZZQV+0Me+yTYkKC7Ntc=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "moderator",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-21T07:50:51Z",
+        "email": "moderator@mail.ru",
+        "phone_number": null,
+        "avatar": "",
+        "city": null,
+        "token": null,
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$zsqlTozjr2Rmgzr6rPg8Di$j7w/g30Axweq/lGwpbSXyZnMoHhsLbJC9jTVncdxfPM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Boris",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-21T07:51:33Z",
+        "email": "boris@mail.ru",
+        "phone_number": null,
+        "avatar": "",
+        "city": null,
+        "token": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$cf1wZ1PGezroVeifjvXfXj$1OuwedH3FjFfN4lVn81idCt3+DKBFqMNSubqaM3Fx0w=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Anna",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-21T07:52:01Z",
+        "email": "anna@mail.ru",
+        "phone_number": null,
+        "avatar": "",
+        "city": null,
+        "token": null,
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

@@ -3,36 +3,42 @@
     "model": "users.payment",
     "pk": 1,
     "fields": {
-        "user": 2,
-        "date_of_payment": "2025-02-26",
-        "course": 2,
+        "user": 5,
+        "date_of_payment": "2025-03-21",
+        "course": 3,
         "lesson": null,
-        "payment_amount": 150000,
-        "method_of_payment": "Перевод на счёт"
+        "amount": 50000,
+        "method_of_payment": "Перевод на счёт",
+        "session_id": null,
+        "link": null
     }
 },
 {
     "model": "users.payment",
     "pk": 2,
     "fields": {
-        "user": 3,
-        "date_of_payment": "2025-02-26",
-        "course": null,
-        "lesson": 4,
-        "payment_amount": 10000,
-        "method_of_payment": "Наличные"
+        "user": 4,
+        "date_of_payment": "2025-03-21",
+        "course": 5,
+        "lesson": null,
+        "amount": 100000,
+        "method_of_payment": "Перевод на счёт",
+        "session_id": null,
+        "link": null
     }
 },
 {
     "model": "users.payment",
     "pk": 3,
     "fields": {
-        "user": 5,
-        "date_of_payment": "2025-02-26",
+        "user": 2,
+        "date_of_payment": "2025-03-21",
         "course": null,
-        "lesson": 5,
-        "payment_amount": 1000,
-        "method_of_payment": "Перевод на счёт"
+        "lesson": 4,
+        "amount": 25000,
+        "method_of_payment": "Перевод на счёт",
+        "session_id": null,
+        "link": null
     }
 }
 ]
