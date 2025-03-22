@@ -1,0 +1,126 @@
+[
+{
+    "model": "materials.course",
+    "pk": 2,
+    "fields": {
+        "title": "Python",
+        "image": "",
+        "description": "",
+        "owner": 4
+    }
+},
+{
+    "model": "materials.course",
+    "pk": 3,
+    "fields": {
+        "title": "Java",
+        "image": "",
+        "description": "",
+        "owner": 5
+    }
+},
+{
+    "model": "materials.course",
+    "pk": 5,
+    "fields": {
+        "title": "Python2",
+        "image": "",
+        "description": "",
+        "owner": 2
+    }
+},
+{
+    "model": "materials.course",
+    "pk": 6,
+    "fields": {
+        "title": "Test",
+        "image": "",
+        "description": null,
+        "owner": null
+    }
+},
+{
+    "model": "materials.lesson",
+    "pk": 2,
+    "fields": {
+        "title": "Введение в программирование",
+        "description": null,
+        "image": "",
+        "video": "Ссылка какая-то",
+        "course": 2,
+        "owner": null
+    }
+},
+{
+    "model": "materials.lesson",
+    "pk": 3,
+    "fields": {
+        "title": "Введение в ООП",
+        "description": null,
+        "image": "",
+        "video": "Ссылка какая-то",
+        "course": 2,
+        "owner": null
+    }
+},
+{
+    "model": "materials.lesson",
+    "pk": 4,
+    "fields": {
+        "title": "SQL",
+        "description": null,
+        "image": "",
+        "video": "Ссылка какая-то",
+        "course": 2,
+        "owner": null
+    }
+},
+{
+    "model": "materials.lesson",
+    "pk": 8,
+    "fields": {
+        "title": "Списки",
+        "description": null,
+        "image": "",
+        "video": "Ссылка какая-то",
+        "course": 2,
+        "owner": null
+    }
+},
+{
+    "model": "materials.lesson",
+    "pk": 9,
+    "fields": {
+        "title": "Циклы",
+        "description": null,
+        "image": "",
+        "video": "Ссылка какая-то",
+        "course": 2,
+        "owner": null
+    }
+},
+{
+    "model": "materials.lesson",
+    "pk": 10,
+    "fields": {
+        "title": "Циклы2",
+        "description": null,
+        "image": "",
+        "video": "Ссылка какая-то",
+        "course": 2,
+        "owner": null
+    }
+},
+{
+    "model": "materials.lesson",
+    "pk": 11,
+    "fields": {
+        "title": "Django",
+        "description": "",
+        "image": "",
+        "video": "http://smth.youtube.com",
+        "course": 2,
+        "owner": 4
+    }
+}
+]

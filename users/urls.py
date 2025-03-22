@@ -1,9 +1,8 @@
 from rest_framework.permissions import AllowAny
-from rest_framework.routers import SimpleRouter
 from django.urls import path
 from .apps import UsersConfig
 from .views import (PaymentListApiView, UserCreateAPIView, UserListApiView, UserRetrieveApiView, UserUpdateApiView,
-                    UserDestroyApiView)
+                    UserDestroyApiView, PaymentCreateAPIView)
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -24,6 +23,7 @@ urlpatterns = [
     path('<int:pk>/delete/', UserDestroyApiView.as_view(), name="user_delete"),
     path('login/', TokenObtainPairView.as_view(permission_classes=(AllowAny,)), name='login'),
     path('token/refresh/', TokenRefreshView.as_view(permission_classes=(AllowAny,)), name='token_refresh'),
+    path('payment/create/', PaymentCreateAPIView.as_view(), name='payment_create'),
 ]
 
 # urlpatterns += router.urls

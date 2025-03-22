@@ -13,14 +13,14 @@ class PaymentAdmin(admin.ModelAdmin):
         "date_of_payment",
         "course",
         "lesson",
-        "payment_amount",
+        "amount",
         "method_of_payment",
     )
     search_fields = (
         "user",
         "course",
         "lesson",
-        "payment_amount",
+        "amount",
     )
     list_filter = (
         "user",
