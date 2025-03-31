@@ -9,10 +9,12 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.decorators import action
 
 from materials.models import Course, Lesson, Subscription
 from materials.paginators import CustomPagination
 from materials.serializers import CourseSerializer, CourseDetailSerializer, LessonSerializer
+from materials.tasks import send_info_about_course_update
 from users.permissions import IsModerator, IsOwner
 
 
@@ -38,6 +40,13 @@ class CourseViewSet(ModelViewSet):
         new_course = serializer.save()
         new_course.owner = self.request.user
         new_course.save()
+
+    def perform_update(self, serializer):
+        course = serializer.save()
+        subscriptions = Subscription.objects.filter(course=course.id)
+        if subscriptions:
+            email_list = [subscription.user.email for subscription in subscriptions]
+            send_info_about_course_update.delay(course.title, email_list)
 
 
 class LessonCreateApiView(CreateAPIView):
