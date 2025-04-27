@@ -117,7 +117,7 @@ DATABASES = {
         "PORT": os.getenv("POSTGRES_PORT", default="5432"),
     }
 }
-print(f"DB CONNECTION: host={os.getenv('POSTGRES_HOST')}, port={os.getenv('POSTGRES_PORT')}")
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
