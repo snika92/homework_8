@@ -58,6 +58,8 @@ services:
       - redis
 
   celery_beat:
+    networks:
+      - app_network
     build:
       context: .
     command: celery -A config beat -l INFO -S django
