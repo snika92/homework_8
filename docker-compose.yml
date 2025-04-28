@@ -10,7 +10,7 @@ services:
     env_file:
       - ./.env
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U $DB_USER" ]
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -69,6 +69,16 @@ services:
       - db
       - redis
       - celery
+
+  nginx:
+    build: ./
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./html:/usr/share/nginx/html
+    depends_on:
+      - web
 
 networks:
   app_network:
