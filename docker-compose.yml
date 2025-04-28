@@ -76,6 +76,8 @@ services:
       - celery
 
   nginx:
+    networks:
+      - app_network
     build:
       context: ./nginx
     ports:
