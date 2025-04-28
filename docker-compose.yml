@@ -34,6 +34,11 @@ services:
       - db
     env_file:
       - ./.env
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   redis:
     image: "redis:latest"
@@ -81,7 +86,8 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - static_volume:/app/staticfiles
     depends_on:
-      - web
+      web:
+        condition: service_healthy
 
 networks:
   app_network:
