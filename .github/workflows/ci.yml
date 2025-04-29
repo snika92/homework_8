@@ -71,8 +71,15 @@ jobs:
         poetry install --no-root
         poetry add django flake8
 
+    - name: Check PostgreSQL
+      run: docker ps
+
     - name: Wait for PostgreSQL
-      run: sleep 10  # Даем время PostgreSQL запуститься
+      run: |
+        for i in {1..10}; do
+          nc -z localhost 5432 &amp;&amp; break
+          sleep 2
+        done
 
     - name: Run migrations
       env:
