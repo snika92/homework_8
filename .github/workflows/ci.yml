@@ -57,9 +57,11 @@ jobs:
     - name: Install dependencies
       run: |
         poetry install --no-root
+        poetry add django flake8
 
     - name: Run migrations
-      run: python manage.py migrate
+      run: |
+        poetry run python manage.py migrate
 
     - name: Run tests
       run: python manage.py test
