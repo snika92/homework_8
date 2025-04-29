@@ -111,10 +111,10 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("POSTGRES_NAME"),
-        "USER": os.getenv("POSTGRES_USER"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "HOST": os.getenv("POSTGRES_HOST"),
+        "NAME": os.getenv("POSTGRES_NAME", 'test_db'),
+        "USER": os.getenv("POSTGRES_USER", 'postgres'),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD", 'postgres'),
+        "HOST": os.getenv("POSTGRES_HOST", 'localhost'),
         "PORT": os.getenv("POSTGRES_PORT", default="5432"),
     }
 }
