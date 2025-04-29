@@ -61,6 +61,7 @@ jobs:
 
     - name: Run migrations
       run: |
+        export SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}
         poetry run python manage.py migrate
 
     - name: Run tests
