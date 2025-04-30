@@ -10,7 +10,7 @@ services:
     env_file:
       - ./.env
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U $DB_USER" ]
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -19,14 +19,12 @@ services:
     networks:
       - app_network
     build: .
-    command: >
-        bash -c  "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-#    command: python manage.py csu && python manage.py runserver 0.0.0.0:8000
-#    command: python manage.py runserver 0.0.0.0:8000
+    container_name: web
+    command: sh -c "python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - .:/app
       - media:/app/media
-      - static_volume:/code/static
+      - static_volume:/app/staticfiles
     ports:
       - "8000:8000"
     depends_on:
@@ -34,6 +32,8 @@ services:
       - db
     env_file:
       - ./.env
+    healthcheck:
+      disable: true
 
   redis:
     image: "redis:latest"
@@ -41,6 +41,8 @@ services:
       - "6379:6379"
     volumes:
       - ./redis_data:/data
+    env_file:
+      - ./.env
     healthcheck:
       test: [ "CMD-SHELL", "redis-cli ping | grep PONG" ]
       interval: 10s
@@ -70,6 +72,19 @@ services:
       - redis
       - celery
 
+  nginx:
+    networks:
+      - app_network
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/app/staticfiles
+    depends_on:
+      - web
+
 networks:
   app_network:
     driver: bridge
@@ -78,3 +93,4 @@ volumes:
   postgres_data:
   media:
   static_volume:
+  redis_data:
